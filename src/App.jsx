@@ -184,7 +184,6 @@ function Nav() {
 
 /* ── Hero ── */
 function Hero() {
-  const status = getOpenStatus()
   return (
     <header className="hero" id="top">
       <div className="wrap hero__grid">
@@ -216,69 +215,21 @@ function Hero() {
         </motion.div>
 
         <motion.div className="hero__art"
-          initial={{ opacity: 0, scale: 0.8, rotate: -8 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}>
-          <PizzaArt />
-          <motion.div className="hero__float hero__float--1"
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }}>
-            <span aria-hidden="true">🔥</span>
-            <div>Appena sfornata<small>impasto del giorno</small></div>
-          </motion.div>
-          <motion.div className={`hero__float hero__float--2`}
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1 }}>
-            <span className="status-pill-mini" style={{ color: status.open ? '#0f7a3d' : '#b5271f', fontWeight: 800 }}>
-              {status.open ? '● Aperto' : '● Chiuso'}
-            </span>
-            <div style={{ fontWeight: 500, color: '#6f7d72' }}>{status.message.replace(/^(Aperto|Chiuso)[^·]*·?\s*/, '')}</div>
-          </motion.div>
+          <div className="pizza-3d">
+            <img
+              src="/pizza-hero.png"
+              alt="Pizza margherita appena sfornata di Ninja Turtle Pizza"
+              className="pizza-photo"
+              draggable="false"
+            />
+          </div>
         </motion.div>
       </div>
       <div className="hero__scroll">Scorri <span /></div>
     </header>
-  )
-}
-
-/* ── Pizza art (SVG animato) ── */
-function PizzaArt() {
-  const toppings = [
-    [150, 120], [230, 150], [180, 210], [260, 240], [130, 230],
-    [300, 180], [210, 290], [290, 300], [160, 300],
-  ]
-  return (
-    <svg className="pizza-spin" viewBox="0 0 420 420" role="img" aria-label="Pizza Ninja Turtle">
-      <defs>
-        <radialGradient id="dough" cx="50%" cy="45%" r="60%">
-          <stop offset="0" stopColor="#F6C453" />
-          <stop offset="1" stopColor="#E09F3E" />
-        </radialGradient>
-        <radialGradient id="sauce" cx="50%" cy="45%" r="55%">
-          <stop offset="0" stopColor="#E85341" />
-          <stop offset="1" stopColor="#C0362A" />
-        </radialGradient>
-      </defs>
-      <g className="spin">
-        <circle cx="210" cy="210" r="195" fill="#D69436" />
-        <circle cx="210" cy="210" r="182" fill="url(#dough)" />
-        <circle cx="210" cy="210" r="150" fill="url(#sauce)" />
-        {/* mozzarella */}
-        {[[170,150,26],[250,170,30],[190,250,28],[260,240,22],[150,230,20],[230,290,24]].map(([x,y,r],i)=>(
-          <circle key={i} cx={x} cy={y} r={r} fill="#FBF0D6" opacity="0.92" />
-        ))}
-        {/* basilico */}
-        {[[200,180],[270,210],[180,280],[240,150]].map(([x,y],i)=>(
-          <ellipse key={i} cx={x} cy={y} rx="12" ry="7" fill="#2E8B4E" transform={`rotate(${i*40} ${x} ${y})`} />
-        ))}
-        {/* salamino */}
-        {toppings.map(([x, y], i) => (
-          <circle key={i} cx={x} cy={y} r="15" fill="#CE3B3B" stroke="#A82C2C" strokeWidth="2" />
-        ))}
-      </g>
-      {/* benda ninja che NON gira (identità) */}
-      <rect x="70" y="188" width="280" height="46" rx="6" fill="#22A559" opacity="0.96" />
-      <path d="M120 196 h44 v30 h-44 a15 15 0 0 1 0 -30 z" fill="#0B1A10" />
-      <path d="M300 196 h-44 v30 h44 a15 15 0 0 0 0 -30 z" fill="#0B1A10" />
-    </svg>
   )
 }
 
