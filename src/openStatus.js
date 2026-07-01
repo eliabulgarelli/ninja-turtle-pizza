@@ -1,4 +1,4 @@
-import { HOURS } from './data.js'
+import { HOURS, fmtTime } from './data.js'
 
 // Converte "HH:MM" in minuti dall'inizio della giornata.
 function toMinutes(hhmm) {
@@ -17,11 +17,11 @@ export function getOpenStatus(now = new Date()) {
     const openM = toMinutes(today.open)
     const closeM = toMinutes(today.close)
     if (minutesNow >= openM && minutesNow < closeM) {
-      return { open: true, message: `Aperto ora · fino alle ${today.close}`, nextOpenDay: null }
+      return { open: true, message: `Aperto ora · fino alle ${fmtTime(today.close)}`, nextOpenDay: null }
     }
     // Prima dell'apertura, stesso giorno
     if (minutesNow < openM) {
-      return { open: false, message: `Chiuso · apre oggi alle ${today.open}`, nextOpenDay: today.day }
+      return { open: false, message: `Chiuso · apre oggi alle ${fmtTime(today.open)}`, nextOpenDay: today.day }
     }
   }
 
@@ -32,7 +32,7 @@ export function getOpenStatus(now = new Date()) {
       const when = i === 1 ? 'domani' : d.short
       return {
         open: false,
-        message: `Chiuso · apre ${when} alle ${d.open}`,
+        message: `Chiuso · apre ${when} alle ${fmtTime(d.open)}`,
         nextOpenDay: d.day,
       }
     }

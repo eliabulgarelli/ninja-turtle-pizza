@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { BUSINESS, HOURS, SERVICES, MENU, REVIEWS } from './data.js'
+import { BUSINESS, HOURS, SERVICES, MENU, MENU_TABS, REVIEWS, fmtTime } from './data.js'
 import { getOpenStatus } from './openStatus.js'
 
 /* ── Logo SVG (spicchio di pizza con benda ninja) ── */
@@ -198,8 +198,9 @@ function Hero() {
           </motion.h1>
           <motion.p className="hero__tag" variants={reveal}>{BUSINESS.tagline}</motion.p>
           <motion.p className="hero__lead" variants={reveal}>
-            Pizze XXL, farcite e al trancio a Reggio Emilia. Impasto curato, ingredienti
-            veri, formati generosi. No la classica pizzeria — finalmente.
+            Le XXL da 50 cm coi nomi giusti — Leonardo, Raffaello, Shredder — più le
+            classiche di sempre. Al trancio o intera, a Reggio Emilia. No la classica
+            pizzeria, finalmente.
           </motion.p>
           <motion.div className="hero__cta" variants={reveal}>
             <a className="btn btn--tomato" href={`tel:${BUSINESS.phoneHref}`}>
@@ -208,7 +209,7 @@ function Hero() {
             <a className="btn btn--ghost" href="#menu">Scopri il menu {Icon.arrow({ width: 20, height: 20 })}</a>
           </motion.div>
           <motion.div className="hero__stats" variants={reveal}>
-            <div className="hero__stat"><strong>XXL</strong><span>formati da condividere</span></div>
+            <div className="hero__stat"><strong>50 cm</strong><span>le XXL da dividere</span></div>
             <div className="hero__stat"><strong>{BUSINESS.priceRange}</strong><span>a persona</span></div>
             <div className="hero__stat"><strong>3</strong><span>sul posto · asporto · delivery</span></div>
           </motion.div>
@@ -298,18 +299,40 @@ function Marquee() {
 
 /* ── Menu ── */
 function Menu() {
+  const [tab, setTab] = useState(MENU_TABS[0].key)
+  const active = MENU_TABS.find((t) => t.key === tab)
+  const items = MENU[tab]
   return (
     <section className="block menu" id="menu">
       <div className="wrap">
         <Reveal className="block__head">
           <span className="eyebrow">Il menu</span>
-          <h2 className="section-title">Le pizze che tirano fuori il ninja che c’è in te</h2>
-          <p className="section-sub">Una selezione dei nostri cavalli di battaglia. Tante altre farciture e formati ti aspettano in pizzeria.</p>
+          <h2 className="section-title">Scegli il tuo lato oscuro</h2>
+          <p className="section-sub">
+            Dalle XXL da 50 cm coi nomi delle tartarughe alle classiche di sempre.
+            Al trancio o intera.
+          </p>
         </Reveal>
-        <Reveal group className="menu-grid">
-          {MENU.map((item) => (
+
+        <div className="menu-tabs" role="tablist" aria-label="Categorie del menu">
+          {MENU_TABS.map((t) => (
+            <button
+              key={t.key}
+              role="tab"
+              aria-selected={tab === t.key}
+              className={`menu-tab ${tab === t.key ? 'active' : ''}`}
+              onClick={() => setTab(t.key)}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+        {active.hint && <p className="menu-tabs__hint">{active.hint}</p>}
+
+        <Reveal group className="menu-grid" key={tab}>
+          {items.map((item) => (
             <motion.article className="menu-card" key={item.name} variants={reveal}>
-              <span className="menu-card__tag">{item.tag}</span>
+              {item.badge && <span className="menu-card__tag">{item.badge}</span>}
               <div className="menu-card__row">
                 <h3>{item.name}</h3>
                 <span className="menu-card__price">{item.price}</span>
@@ -318,7 +341,10 @@ function Menu() {
             </motion.article>
           ))}
         </Reveal>
-        <p className="menu-note">* I prezzi sono indicativi. Il menu completo e le farciture del giorno le trovi in pizzeria o al telefono.</p>
+        <p className="menu-note">
+          Menu completo, prezzi in euro. Per allergeni e disponibilità del giorno,
+          chiama la pizzeria allo {BUSINESS.phone}.
+        </p>
       </div>
     </section>
   )
@@ -438,7 +464,7 @@ function Location() {
             {HOURS.map((h, i) => (
               <div className={`hours-row ${i === todayIdx ? 'today' : ''}`} key={h.day}>
                 <span>{h.day}</span>
-                {h.open ? <span>{h.open} – {h.close}</span> : <span className="closed-txt">Chiuso</span>}
+                {h.open ? <span>{fmtTime(h.open)} – {fmtTime(h.close)}</span> : <span className="closed-txt">Chiuso</span>}
               </div>
             ))}
           </div>
