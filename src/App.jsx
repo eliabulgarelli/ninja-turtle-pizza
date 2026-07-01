@@ -220,7 +220,7 @@ function Hero() {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}>
           <div className="pizza-3d">
             <img
-              src="/pizza-hero.png"
+              src={`${import.meta.env.BASE_URL}pizza-hero.png`}
               alt="Pizza margherita appena sfornata di Ninja Turtle Pizza"
               className="pizza-photo"
               draggable="false"
