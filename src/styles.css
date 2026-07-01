@@ -134,6 +134,10 @@ section { position: relative; }
 
 .btn--dark { --btn-bg: var(--ink); box-shadow: 0 10px 24px -12px rgba(0,0,0,0.6); }
 
+/* Glovo — giallo brand, testo scuro */
+.btn--glovo { --btn-bg: #ffc244; --btn-fg: #16240f; box-shadow: 0 10px 24px -10px rgba(255, 194, 68, 0.7); }
+.btn--glovo:hover { --btn-bg: #ffcf6b; box-shadow: 0 16px 30px -12px rgba(255, 194, 68, 0.85); }
+
 /* ── Nav ─────────────────────────────────── */
 .nav {
   position: fixed;
@@ -456,6 +460,22 @@ section { position: relative; }
 }
 .service h3 { font-family: var(--font-head); font-size: 1.5rem; margin-bottom: 8px; }
 .service p { color: rgba(251,246,236,0.72); }
+.service__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: #ffc244;
+  color: #16240f;
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  font-size: 1rem;
+  min-height: 40px;
+  transition: transform 0.22s var(--ease), background 0.22s var(--ease);
+}
+.service__link:hover { background: #ffcf6b; transform: translateY(-2px); }
 
 /* ── Reviews ─────────────────────────────── */
 .reviews { background: var(--bg); }
@@ -541,6 +561,8 @@ section { position: relative; }
 .footer__cols { display: flex; gap: 50px; flex-wrap: wrap; }
 .footer__col h4 { color: var(--cream); font-family: var(--font-display); letter-spacing: 0.06em; margin-bottom: 12px; font-size: 1.15rem; }
 .footer__col a, .footer__col p { display: block; margin-bottom: 8px; font-size: 0.95rem; }
+.footer__ico { display: inline-flex !important; align-items: center; gap: 7px; }
+.footer__ico svg { flex-shrink: 0; }
 .footer__bottom { margin-top: 36px; padding-top: 20px; border-top: 1px solid rgba(251,246,236,0.1); font-size: 0.85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 
 /* ── Reveal on scroll (fallback se JS/motion assente) ── */

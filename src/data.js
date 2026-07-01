@@ -16,7 +16,11 @@ export const BUSINESS = {
   phoneHref: '+393755946144',
   mapsUrl:
     'https://www.google.com/maps/place/Ninja+Turtle+Pizza/@44.6716083,10.637474,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgIC7n9vIIw!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAPNQkAH_QnPflMD8Lha3iI7iJZ0f-8brGuoNs-ZUJVxolecALXC7ZL3U0LS2mFfSEe-n2K5yWXbsTtiZphOJgTXgOISbhmjMpYiIldriOiCIS1PjqIZVeM2VrpSJ5l17dlo6T-_enzev%3Dw640-h640-n-k-no!7i3024!8i4032!4m18!1m10!3m9!1s0x47801d2d9318646d:0xd29c6aa0c82ff7be!2sNinja+Turtle+Pizza!8m2!3d44.6715353!4d10.6377035!10e5!14m1!1BCgIgARICCAI!16s%2Fg%2F11w9nj5mpb!3m6!1s0x47801d2d9318646d:0xd29c6aa0c82ff7be!8m2!3d44.6715353!4d10.6377035!10e9!16s%2Fg%2F11w9nj5mpb?entry=ttu&g_ep=EgoyMDI2MDYyOC4wIKXMDSoASAFQAw%3D%3D',
-  deliveryUrl: 'https://glovoapp.com/',
+  // Consegna a domicilio tramite Glovo (link diretto al menu del locale)
+  deliveryUrl:
+    'https://glovoapp.com/it/it/reggio-emilia/stores/ninja-turtles-pizza-lid?content=menu-c.2555146266&section=pizze-s.6236700219',
+  instagram: 'https://www.instagram.com/ninjaturtlepizza_/',
+  instagramHandle: '@ninjaturtlepizza_',
 }
 
 // Converte "24:00" (mezzanotte, per la logica) in "00:00" (per la vista).

@@ -68,6 +68,12 @@ const Icon = {
       <path d="M4 6h16M4 12h16M4 18h16" />
     </svg>
   ),
+  instagram: (p) => (
+    <svg {...p} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none" />
+    </svg>
+  ),
 }
 const serviceIcons = { dinein: Icon.dinein, takeaway: Icon.bag, delivery: Icon.scooter }
 
@@ -205,6 +211,9 @@ function Hero() {
             <a className="btn btn--tomato" href={`tel:${BUSINESS.phoneHref}`}>
               {Icon.phone({ width: 20, height: 20 })} Chiama & ordina
             </a>
+            <a className="btn btn--glovo" href={BUSINESS.deliveryUrl} target="_blank" rel="noopener noreferrer">
+              {Icon.scooter({ width: 20, height: 20 })} Ordina su Glovo
+            </a>
             <a className="btn btn--ghost" href="#menu">Scopri il menu {Icon.arrow({ width: 20, height: 20 })}</a>
           </motion.div>
           <motion.div className="hero__stats" variants={reveal}>
@@ -319,6 +328,11 @@ function Services() {
                 <div className="service__icon">{Ico({ width: 30, height: 30 })}</div>
                 <h3>{s.title}</h3>
                 <p>{s.text}</p>
+                {s.key === 'delivery' && (
+                  <a className="service__link" href={BUSINESS.deliveryUrl} target="_blank" rel="noopener noreferrer">
+                    Ordina su Glovo {Icon.arrow({ width: 18, height: 18 })}
+                  </a>
+                )}
               </motion.article>
             )
           })}
@@ -434,6 +448,7 @@ function FinalCta() {
           <h2>Fame da ninja?</h2>
           <p>Chiama, ordina e in poco la tua pizza è pronta. Sul posto, d’asporto o a domicilio.</p>
           <div className="finalcta__btns">
+            <a className="btn btn--glovo" href={BUSINESS.deliveryUrl} target="_blank" rel="noopener noreferrer">{Icon.scooter({ width: 20, height: 20 })} Ordina su Glovo</a>
             <a className="btn btn--dark" href={`tel:${BUSINESS.phoneHref}`}>{Icon.phone({ width: 20, height: 20 })} {BUSINESS.phone}</a>
             <a className="btn" href={BUSINESS.mapsUrl} target="_blank" rel="noopener noreferrer">{Icon.pin({ width: 20, height: 20 })} Vieni a trovarci</a>
           </div>
@@ -468,6 +483,12 @@ function Footer() {
               <a href={`tel:${BUSINESS.phoneHref}`}>{BUSINESS.phone}</a>
               <a href={BUSINESS.mapsUrl} target="_blank" rel="noopener noreferrer">{BUSINESS.address}</a>
               <p>{BUSINESS.city}</p>
+              <a className="footer__ico" href={BUSINESS.instagram} target="_blank" rel="noopener noreferrer">
+                {Icon.instagram({ width: 17, height: 17 })} {BUSINESS.instagramHandle}
+              </a>
+              <a className="footer__ico" href={BUSINESS.deliveryUrl} target="_blank" rel="noopener noreferrer">
+                {Icon.scooter({ width: 17, height: 17 })} Ordina su Glovo
+              </a>
             </div>
           </div>
         </div>
