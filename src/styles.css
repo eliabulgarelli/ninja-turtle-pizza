@@ -189,13 +189,13 @@ section { position: relative; }
 /* Il CTA dentro la lista serve solo nel menu mobile a tendina */
 .nav__cta-mobile { display: none; }
 @media (max-width: 899px) {
-  .nav__cta-mobile { display: block; margin-top: 10px; width: 100%; align-self: stretch; }
-  /* Pulsante rosso a tutta larghezza, come "Chiama & ordina" */
+  .nav__cta-mobile { display: block; margin-top: 12px; align-self: center; }
+  /* Pulsante rosso a ovale compatto e centrato (non a tutta larghezza) */
   .nav__cta-mobile .btn {
-    display: flex;
-    width: 100%;
+    display: inline-flex;
+    width: auto;
     justify-content: center;
-    padding: 14px 24px;
+    padding: 14px 34px;
   }
 }
 
