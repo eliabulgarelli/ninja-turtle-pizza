@@ -190,7 +190,9 @@ function Nav() {
           <li><a href="#recensioni" onClick={close}>Recensioni</a></li>
           <li><a href="#dove" onClick={close}>Dove siamo</a></li>
           <li className="nav__cta-mobile">
-            <a href={`tel:${BUSINESS.phoneHref}`} onClick={close}>Ordina ora</a>
+            <a className="btn btn--tomato" href={`tel:${BUSINESS.phoneHref}`} onClick={close}>
+              {Icon.phone({ width: 18, height: 18 })} Ordina ora
+            </a>
           </li>
         </ul>
         <a className="btn btn--tomato nav__cta" href={`tel:${BUSINESS.phoneHref}`}>
