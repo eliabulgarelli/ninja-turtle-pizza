@@ -153,15 +153,33 @@ function Reveal({ children, className, group = false }) {
 function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const navRef = useRef(null)
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+  // Chiudi il menu a tendina cliccando fuori, con Esc o scrollando.
+  useEffect(() => {
+    if (!open) return
+    const onOutside = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) setOpen(false)
+    }
+    const onEsc = (e) => { if (e.key === 'Escape') setOpen(false) }
+    const onScroll = () => setOpen(false)
+    document.addEventListener('pointerdown', onOutside)
+    document.addEventListener('keydown', onEsc)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      document.removeEventListener('pointerdown', onOutside)
+      document.removeEventListener('keydown', onEsc)
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [open])
   const close = () => setOpen(false)
   return (
-    <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
+    <nav className={`nav ${scrolled ? 'scrolled' : ''}`} ref={navRef}>
       <div className="wrap nav__inner">
         <a href="#top" className="nav__brand" onClick={close}>
           <Logo />
@@ -172,7 +190,7 @@ function Nav() {
           <li><a href="#recensioni" onClick={close}>Recensioni</a></li>
           <li><a href="#dove" onClick={close}>Dove siamo</a></li>
           <li className="nav__cta-mobile">
-            <a className="btn btn--tomato" href={`tel:${BUSINESS.phoneHref}`} onClick={close}>Ordina</a>
+            <a href={`tel:${BUSINESS.phoneHref}`} onClick={close}>Ordina ora</a>
           </li>
         </ul>
         <a className="btn btn--tomato nav__cta" href={`tel:${BUSINESS.phoneHref}`}>
@@ -190,6 +208,13 @@ function Nav() {
 function Hero() {
   return (
     <header className="hero" id="top">
+      <div
+        className="hero__bg"
+        style={{
+          backgroundImage: `linear-gradient(160deg, rgba(6,20,13,0.82), rgba(9,28,18,0.9)), url(${import.meta.env.BASE_URL}mural.png)`,
+        }}
+        aria-hidden="true"
+      />
       <div className="wrap hero__grid">
         <motion.div initial="hidden" animate="show" variants={stagger}>
           <motion.span className="hero__badge" variants={reveal}>
@@ -231,23 +256,7 @@ function Hero() {
           </div>
         </motion.div>
       </div>
-      <div className="hero__scroll">Scorri <span /></div>
     </header>
-  )
-}
-
-/* ── Marquee ── */
-function Marquee() {
-  const items = ['XXL DA CONDIVIDERE', 'IMPASTO DEL GIORNO', 'ASPORTO & DELIVERY', 'RAFFAELLO BBQ', 'AL TRANCIO', 'NINJA TURTLE PIZZA']
-  const row = (
-    <span>
-      {items.map((t, i) => (<span key={i}>{t} <em style={{ color: '#06210f' }}>🐢</em></span>))}
-    </span>
-  )
-  return (
-    <div className="marquee" aria-hidden="true">
-      <div className="marquee__track">{row}{row}</div>
-    </div>
   )
 }
 
@@ -469,7 +478,6 @@ export default function App() {
     <>
       <Nav />
       <Hero />
-      <Marquee />
       <Menu />
       <Reviews />
       <Location />

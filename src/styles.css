@@ -227,6 +227,16 @@ section { position: relative; }
   overflow: hidden;
   padding: 110px 0 60px;
 }
+/* Sfondo murales (con velo scuro applicato inline) */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+.hero > .wrap { position: relative; z-index: 2; }
 .hero__grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -573,6 +583,27 @@ section { position: relative; }
 
 /* ── Reveal on scroll (fallback se JS/motion assente) ── */
 .reveal { opacity: 1; }
+
+/* ── Error boundary ──────────────────────── */
+.errbound {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: linear-gradient(160deg, var(--ninja-900), var(--ninja-800));
+  color: var(--cream);
+}
+.errbound__card {
+  max-width: 520px;
+  text-align: center;
+  background: rgba(7, 23, 16, 0.6);
+  border: 1px solid rgba(61, 220, 132, 0.25);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+}
+.errbound__card h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 6vw, 2.6rem); margin-bottom: 14px; }
+.errbound__card p { color: rgba(251, 246, 236, 0.8); margin-bottom: 26px; }
+.errbound__btns { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
 
 /* ── Reduced motion ──────────────────────── */
 @media (prefers-reduced-motion: reduce) {
