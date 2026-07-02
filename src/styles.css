@@ -234,6 +234,12 @@ section { position: relative; }
   align-items: center;
 }
 @media (min-width: 960px) { .hero__grid { grid-template-columns: 1.05fr 0.95fr; gap: 30px; } }
+/* Mobile: la pizza va SOPRA il testo */
+@media (max-width: 959px) {
+  .hero__grid { gap: 20px; }
+  .hero__art { order: -1; }
+  .pizza-3d { width: min(320px, 66vw); }
+}
 
 .hero__badge {
   display: inline-flex;

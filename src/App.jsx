@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { BUSINESS, HOURS, SERVICES, MENU, MENU_TABS, REVIEWS, fmtTime } from './data.js'
+import { BUSINESS, HOURS, MENU, MENU_TABS, REVIEWS, fmtTime } from './data.js'
 import { getOpenStatus } from './openStatus.js'
 
 /* ── Logo SVG (spicchio di pizza con benda ninja) ── */
@@ -75,7 +75,6 @@ const Icon = {
     </svg>
   ),
 }
-const serviceIcons = { dinein: Icon.dinein, takeaway: Icon.bag, delivery: Icon.scooter }
 
 /* ── Animazioni riutilizzabili ── */
 const reveal = {
@@ -170,7 +169,6 @@ function Nav() {
         </a>
         <ul className={`nav__links ${open ? 'show' : ''}`}>
           <li><a href="#menu" onClick={close}>Menu</a></li>
-          <li><a href="#servizi" onClick={close}>Servizi</a></li>
           <li><a href="#recensioni" onClick={close}>Recensioni</a></li>
           <li><a href="#dove" onClick={close}>Dove siamo</a></li>
           <li className="nav__cta-mobile">
@@ -204,8 +202,9 @@ function Hero() {
           <motion.p className="hero__tag" variants={reveal}>{BUSINESS.tagline}</motion.p>
           <motion.p className="hero__lead" variants={reveal}>
             Le XXL da 50 cm coi nomi giusti — Leonardo, Raffaello, Shredder — più le
-            classiche di sempre. Al trancio o intera, a Reggio Emilia. No la classica
-            pizzeria, finalmente.
+            classiche di sempre, al trancio o intere. Mangiala da noi, portala via o
+            fattela consegnare a domicilio, a Reggio Emilia. No la classica pizzeria,
+            finalmente.
           </motion.p>
           <motion.div className="hero__cta" variants={reveal}>
             <a className="btn btn--tomato" href={`tel:${BUSINESS.phoneHref}`}>
@@ -215,11 +214,6 @@ function Hero() {
               {Icon.scooter({ width: 20, height: 20 })} Ordina su Glovo
             </a>
             <a className="btn btn--ghost" href="#menu">Scopri il menu {Icon.arrow({ width: 20, height: 20 })}</a>
-          </motion.div>
-          <motion.div className="hero__stats" variants={reveal}>
-            <div className="hero__stat"><strong>50 cm</strong><span>le XXL da dividere</span></div>
-            <div className="hero__stat"><strong>{BUSINESS.priceRange}</strong><span>a persona</span></div>
-            <div className="hero__stat"><strong>3</strong><span>sul posto · asporto · delivery</span></div>
           </motion.div>
         </motion.div>
 
@@ -311,37 +305,6 @@ function Menu() {
 }
 
 /* ── Services ── */
-function Services() {
-  return (
-    <section className="block services" id="servizi">
-      <div className="wrap">
-        <Reveal className="block__head">
-          <span className="eyebrow">Come vuoi la tua pizza</span>
-          <h2 className="section-title">Tre modi. Una sola regola: buona.</h2>
-          <p className="section-sub">Che tu voglia sederti, passare a ritirare o restare sul divano, ci pensiamo noi.</p>
-        </Reveal>
-        <Reveal group className="services-grid">
-          {SERVICES.map((s) => {
-            const Ico = serviceIcons[s.key]
-            return (
-              <motion.article className="service" key={s.key} variants={reveal}>
-                <div className="service__icon">{Ico({ width: 30, height: 30 })}</div>
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
-                {s.key === 'delivery' && (
-                  <a className="service__link" href={BUSINESS.deliveryUrl} target="_blank" rel="noopener noreferrer">
-                    Ordina su Glovo {Icon.arrow({ width: 18, height: 18 })}
-                  </a>
-                )}
-              </motion.article>
-            )
-          })}
-        </Reveal>
-      </div>
-    </section>
-  )
-}
-
 /* ── Reviews ── */
 function Reviews() {
   return (
@@ -508,7 +471,6 @@ export default function App() {
       <Hero />
       <Marquee />
       <Menu />
-      <Services />
       <Reviews />
       <Location />
       <FinalCta />
