@@ -357,6 +357,8 @@ function Reviews() {
 function Location() {
   const status = getOpenStatus()
   const todayIdx = new Date().getDay()
+  // Ordine di visualizzazione: lunedì → domenica (HOURS resta 0=domenica per la logica).
+  const weekOrder = [1, 2, 3, 4, 5, 6, 0]
   return (
     <section className="block location" id="dove">
       <div className="wrap location__grid">
@@ -400,12 +402,15 @@ function Location() {
         <Reveal>
           <div className="hours-card">
             <h3>Orari di apertura</h3>
-            {HOURS.map((h, i) => (
-              <div className={`hours-row ${i === todayIdx ? 'today' : ''}`} key={h.day}>
-                <span>{h.day}</span>
-                {h.open ? <span>{fmtTime(h.open)} – {fmtTime(h.close)}</span> : <span className="closed-txt">Chiuso</span>}
-              </div>
-            ))}
+            {weekOrder.map((idx) => {
+              const h = HOURS[idx]
+              return (
+                <div className={`hours-row ${idx === todayIdx ? 'today' : ''}`} key={h.day}>
+                  <span>{h.day}</span>
+                  {h.open ? <span>{fmtTime(h.open)} – {fmtTime(h.close)}</span> : <span className="closed-txt">Chiuso</span>}
+                </div>
+              )
+            })}
           </div>
         </Reveal>
       </div>
