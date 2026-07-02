@@ -228,10 +228,10 @@ function Hero() {
           </motion.h1>
           <motion.p className="hero__tag" variants={reveal}>{BUSINESS.tagline}</motion.p>
           <motion.p className="hero__lead" variants={reveal}>
-            Le XXL da 50 cm coi nomi giusti — Leonardo, Raffaello, Shredder — più le
-            classiche di sempre, al trancio o intere. Mangiala da noi, portala via o
-            fattela consegnare a domicilio, a Reggio Emilia. No la classica pizzeria,
-            finalmente.
+            Dalle XXL da 50 cm con i nomi degli eroi più famosi: Leonardo, Raffaello,
+            Shredder alle classiche di sempre, al trancio o intere. Mangiala da noi,
+            portala via o fattela consegnare a domicilio, a Reggio Emilia. Non la
+            classica pizzeria di sempre.
           </motion.p>
           <motion.div className="hero__cta" variants={reveal}>
             <a className="btn btn--tomato" href={`tel:${BUSINESS.phoneHref}`}>
@@ -472,7 +472,7 @@ function Footer() {
           </div>
         </div>
         <div className="footer__bottom">
-          <span>© {new Date().getFullYear()} Ninja Turtle Pizza · P.IVA —</span>
+          <span>© {new Date().getFullYear()} Ninja Turtle Pizza</span>
           <span>Sito realizzato con cura 🐢</span>
         </div>
       </div>

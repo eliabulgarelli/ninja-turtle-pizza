@@ -25,7 +25,7 @@ export default class ErrorBoundary extends Component {
         <div className="errbound__card">
           <h1>Ops, la pizza è caduta 🍕</h1>
           <p>
-            Qualcosa non ha funzionato nel caricare la pagina. Riprova tra un attimo —
+            Qualcosa non ha funzionato nel caricare la pagina. Riprova tra un attimo;
             nel frattempo puoi sempre chiamarci per ordinare.
           </p>
           <div className="errbound__btns">

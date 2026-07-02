@@ -6,7 +6,7 @@
 
 export const BUSINESS = {
   name: 'Ninja Turtle Pizza',
-  tagline: 'La pizza esce dall’ombra.',
+  tagline: 'La pizza che salva la città.',
   rating: 4.4,
   reviewCount: 41,
   priceRange: '10–20 €',
@@ -70,7 +70,7 @@ export const MENU = {
   xxl: [
     { name: 'Raffaello', desc: 'Prosciutto cotto BBQ, patate e Parmigiano Reggiano.', price: '28,00', badge: 'Ø 50 cm' },
     { name: 'Leonardo', desc: 'Crudo San Daniele, squacquerone e rucola.', price: '28,00', badge: 'Ø 50 cm' },
-    { name: 'Splinter', desc: '99 formaggi — mix formaggioso.', price: '24,50', badge: 'Ø 50 cm' },
+    { name: 'Splinter', desc: '99 formaggi, mix formaggioso.', price: '24,50', badge: 'Ø 50 cm' },
     { name: 'Shredder', desc: 'Salsiccia, crema di peperoni e polvere di olive nere.', price: '24,50', badge: 'Ø 50 cm' },
     { name: 'Michelangelo', desc: 'Salame piccante.', price: '21,00', badge: 'Ø 50 cm' },
     { name: 'Donatello', desc: 'Margherita scomposta.', price: '18,00', badge: 'Ø 50 cm' },
@@ -125,10 +125,10 @@ export const MENU = {
   drink: [
     { name: 'Acqua Lilia naturale', desc: 'Bottiglia 500 ml.', price: '1,50' },
     { name: 'Acqua Lilia frizzante', desc: 'Bottiglia 500 ml.', price: '1,50' },
-    { name: 'Estathé in vetro', desc: '250 ml — gusto pesca o limone.', price: '3,00' },
-    { name: 'Pepsi in lattina', desc: '33 cl — normale o zero.', price: '3,00' },
-    { name: 'Peroni', desc: '33 cl — lager italiana, malto 100% italiano, 4,7% vol.', price: '4,00' },
-    { name: 'Forst', desc: '66 cl — bionda premium lager italiana, 4,8% vol.', price: '6,00' },
+    { name: 'Estathé in vetro', desc: '250 ml, gusto pesca o limone.', price: '3,00' },
+    { name: 'Pepsi in lattina', desc: '33 cl, normale o zero.', price: '3,00' },
+    { name: 'Peroni', desc: '33 cl, lager italiana, malto 100% italiano, 4,7% vol.', price: '4,00' },
+    { name: 'Forst', desc: '66 cl, bionda premium lager italiana, 4,8% vol.', price: '6,00' },
   ],
 }
 
