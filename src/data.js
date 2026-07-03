@@ -58,11 +58,11 @@ export const SERVICES = [
 
 // ── Menu per categoria ──────────────────────────────────
 export const MENU_TABS = [
-  { key: 'xxl', label: 'XXL 50 cm', hint: 'Le giganti coi nomi ninja' },
-  { key: 'trancio', label: 'Al trancio', hint: 'La fetta al volo' },
-  { key: 'ninja', label: 'Menu Ninja', hint: 'Combo + Pepsi' },
-  { key: 'classiche', label: 'Le classiche', hint: 'Tonde, come dio comanda' },
-  { key: 'drink', label: 'Bevande & birre', hint: 'Per accompagnare' },
+  { key: 'classiche', label: 'Le classiche' },
+  { key: 'drink', label: 'Bevande & birre' },
+  { key: 'xxl', label: 'XXL 50 cm' },
+  { key: 'trancio', label: 'Al trancio' },
+  { key: 'ninja', label: 'Menu Ninja' },
 ]
 
 export const MENU = {

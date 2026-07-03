@@ -31,9 +31,10 @@
   --shadow: 0 18px 40px -18px rgba(7, 23, 16, 0.45);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-  --font-head: 'Playfair Display SC', Georgia, serif;
+  /* Bebas Neue in tutto il sito (titoli, corpo, elementi) */
+  --font-head: 'Bebas Neue', Impact, sans-serif;
   --font-display: 'Bebas Neue', Impact, sans-serif;
-  --font-body: 'Karla', system-ui, sans-serif;
+  --font-body: 'Bebas Neue', Impact, sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -67,20 +68,11 @@ section { position: relative; }
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   font-family: var(--font-display);
   letter-spacing: 0.14em;
   font-size: 1.05rem;
   text-transform: uppercase;
   color: var(--green-deep);
-}
-
-.eyebrow::before {
-  content: '';
-  width: 26px;
-  height: 3px;
-  border-radius: 2px;
-  background: var(--green);
 }
 
 .section-title {
@@ -385,7 +377,7 @@ section { position: relative; }
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 34px;
 }
 .menu-tab {
   font-family: var(--font-display);

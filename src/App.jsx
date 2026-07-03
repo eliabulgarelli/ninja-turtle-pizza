@@ -265,7 +265,6 @@ function Hero() {
 /* ── Menu ── */
 function Menu() {
   const [tab, setTab] = useState(MENU_TABS[0].key)
-  const active = MENU_TABS.find((t) => t.key === tab)
   const items = MENU[tab]
   return (
     <section className="block menu" id="menu">
@@ -292,7 +291,6 @@ function Menu() {
             </button>
           ))}
         </div>
-        {active.hint && <p className="menu-tabs__hint">{active.hint}</p>}
 
         <Reveal group className="menu-grid" key={tab}>
           {items.map((item) => (
