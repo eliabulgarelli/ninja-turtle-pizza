@@ -482,6 +482,30 @@ function Footer() {
 }
 
 export default function App() {
+  // All'apertura con un hash (#menu dal QR), scrolla alla sezione:
+  // in una SPA l'elemento non esiste ancora quando il browser prova
+  // a saltarci da solo, quindi lo facciamo dopo il render.
+  useEffect(() => {
+    const id = window.location.hash.slice(1)
+    if (!id) return
+    let tries = 0
+    let timer
+    const tick = () => {
+      const el = document.getElementById(id)
+      if (el) {
+        el.scrollIntoView()
+        // La foto/i font possono spostare il layout dopo il primo scroll:
+        // ritenta finché la sezione non è davvero in cima (max ~1.8s).
+        if (++tries < 9 && Math.abs(el.getBoundingClientRect().top) > 6) {
+          timer = setTimeout(tick, 200)
+        }
+      } else if (++tries < 15) {
+        timer = setTimeout(tick, 150) // React non ha ancora montato la sezione
+      }
+    }
+    timer = setTimeout(tick, 80)
+    return () => clearTimeout(timer)
+  }, [])
   return (
     <>
       <Nav />
