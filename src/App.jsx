@@ -240,6 +240,9 @@ function Hero() {
             <a className="btn btn--glovo" href={BUSINESS.deliveryUrl} target="_blank" rel="noopener noreferrer">
               {Icon.scooter({ width: 20, height: 20 })} Ordina su Glovo
             </a>
+            <a className="btn" href={BUSINESS.mapsUrl} target="_blank" rel="noopener noreferrer">
+              {Icon.pin({ width: 20, height: 20 })} Indicazioni
+            </a>
             <a className="btn btn--ghost" href="#menu">Scopri il menu {Icon.arrow({ width: 20, height: 20 })}</a>
           </motion.div>
         </motion.div>
